@@ -1,0 +1,29 @@
+#include <iostream>
+#include <string>
+#include <random>
+#include <ctime>
+#include <fstream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+	srand(time(0));
+	setlocale(LC_ALL, "Russian");
+	ofstream fout;
+	for (int i = 0; i < 100; i++) {
+		fout.open(to_string(i) + string(".in"));             //создание файла входных данных
+		vector<int>a(3);                                     //вектор, хранящий стороны треугольника
+		for (int j = 0; j < 3; j++)
+			a[j] = rand() % 10;                              //генерация сторон треугольника
+		fout << a[0] << " " << a[1] << " " << a[2] << endl;  //запись входных данных
+		fout.close();
+		fout.open(to_string(i) + string(".out"));            //создание файла выходных данных
+		sort(a.rbegin(), a.rend());                          //сортировка от большего к меньшему
+		double p = (a[0] + a[1] + a[2]) / 2;                 //полусумма сторон треугольника
+		fout << "Стороны треугольника: " << a << " " << b << " " << c << endl;     //запись в выходной файл
+		fout << "Площадь треугольника = " << sqrt(p * (p - a[0]) * (p - a[1]) * (p - a[2])) << endl;
+		fout.close();
+	}
+	return 0;
+}
