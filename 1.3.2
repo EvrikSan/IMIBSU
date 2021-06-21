@@ -1,0 +1,25 @@
+#include <iostream>
+#include <string>
+#include <random>
+#include <ctime>
+#include <fstream>
+#include <math.h>
+
+using namespace std;
+
+int main() {
+	setlocale(LC_ALL, "Russian");
+	double x, e = 0.0001, mx, s;   //mx - х в степени
+	cin >> x;
+	mx = x;
+	s = 0;
+	long long f=1, i=2;             //f - факториал, i - множитель
+	while (fabs(mx / f) > e) {
+		s += mx / f;                //суммирование
+		mx *= -x * x;               //вычисление следующей степени и знака
+		f *= i * (i + 1);           //вычисление следующего факториала
+		i += 2;
+	}
+	cout << "Сумма равна " << s << endl;
+	return 0;                            //завершение программы
+}
