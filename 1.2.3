@@ -1,0 +1,29 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main() {
+	setlocale(LC_ALL, "Russian");
+	int x, y;
+	cin >> x >> y;
+	double r;
+	r = sqrt(x * x + y * y);
+	if (x * y >= 0) {                    //проверка 1ой и 3ей четверти
+		if (r <= 10) {
+			cout << "YES" << endl;
+		}
+		else {
+			cout << "NO" << endl;
+		}
+	}
+	else {                               //проверка 2ой и 4ой четверти
+		if (r >= 5 && r <= 10) {
+			cout << "YES" << endl;
+		}
+		else {
+			cout << "NO" << endl;
+		}
+	}
+	return 0;                            //завершение программы
+}
