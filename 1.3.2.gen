@@ -1,0 +1,34 @@
+#include <iostream>
+#include <string>
+#include <random>
+#include <ctime>
+#include <fstream>
+#include <vector>
+
+using namespace std;
+
+int main() {
+	srand(time(0));
+	setlocale(LC_ALL, "Russian");
+	ofstream fout;
+	for (int i = 0; i < 100; i++) {
+		fout.open(to_string(i) + string(".in"));             //создание файла входных данных
+		double x, e=0.0001, mx, s;
+		x = (rand() % 19999 - 9999) / 10000;
+		fout << x << endl;
+		fout.close();
+		fout.open(to_string(i) + string(".out"));            //создание файла выходных данных
+		mx = x;
+		s = 0;
+		long long f = 1, i = 2;             //f - факториал, i - множитель
+		while (fabs(mx / f) > e) {
+			s += mx / f;                //суммирование
+			mx *= -x * x;               //вычисление следующей степени и знака
+			f *= i * (i + 1);           //вычисление следующего факториала
+			i += 2;
+		}
+		fout << "Сумма равна " << s << endl;               
+		fout.close();
+	}
+	return 0;
+}
