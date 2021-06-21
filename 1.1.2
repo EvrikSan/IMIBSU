@@ -1,0 +1,13 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	setlocale(LC_ALL, "Russian");
+	int a, h, m;                         //угол, часы, минуты
+	cin >> a; 
+	h = a / 30;                          //часы
+	m = (a % 30) * 2;                    //минуты
+	cout << h << " часов " << m << " минут." << endl;   //ответ
+	return 0;                            //завершение программы
+}
