@@ -1,0 +1,33 @@
+#include <iostream>
+#include <string>
+#include <random>
+#include <ctime>
+#include <fstream>
+
+using namespace std;
+
+int main() {
+	srand(time(0));
+	setlocale(LC_ALL, "Russian");
+	ofstream fout;
+	for (int i = 0; i < 100; i++) {
+		fout.open(to_string(i) + string(".in"));             //создание файла входных данных
+		int n, i = 0;                                        //i - количество цифр в 7-ом представлении числа
+		n = rand();
+		fout << n << endl;
+		fout.close();
+		fout.open(to_string(i) + string(".out"));            //создание файла выходных данных
+		if (n) {                                             //n отличен от нуля
+			while (n) {
+				n /= 7;
+				i++;                         
+			}
+		}
+		else {                                               //n равен нулю
+			i = 1;
+		}
+		fout << i << " цифр в представлении числа N в 7-ричной системе счисления" << endl;       
+		fout.close();
+	}
+	return 0;
+}
