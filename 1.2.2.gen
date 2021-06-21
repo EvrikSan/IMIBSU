@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string>
+#include <random>
+#include <ctime>
+#include <fstream>
+#include <math.h>
+
+using namespace std;
+
+int main() {
+	srand(time(0));
+	ofstream fout;
+	setlocale(LC_ALL, "Russian");
+	for (int i = 0; i < 100; i++) {
+		int h, m, s;                               //часы, минуты, секунды
+		h = rand() % 24;
+		m = rand() % 60;
+		s = rand() % 60;
+		fout.open(to_string(i) + string(".in"));   //создание файла входных данных
+		fout << h << " " << m << " " << s;         //запись входных данных
+		fout.close();
+		s += m * 60 + h * 60 * 60 + 1;             //время в секундах, увеличенное на 1
+		h = s / (60 * 60);                         //количество часов
+		m = (s - h * 60 * 60) / 60;                //количество минут
+		s %= 60;                                   //количество секунд
+		fout.open(to_string(i) + string(".out"));  //создание файла выходных данных
+		fout << h << " часов " << m << " минут " << s << " секунд." << endl;  //запись выходных данных
+		fout.close();
+	}
+	return 0;                      //завершение программы
+}
