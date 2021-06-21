@@ -1,0 +1,20 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	setlocale(LC_ALL, "Russian");
+	int n, i=0;             //i - количество цифр в 7ой системе счисления
+	cin >> n;
+	if (n) {                //n отличен от нуля
+			while (n) {
+				n /= 7;
+				i++;
+			}
+		}
+		else {             //n равен нулю
+			i = 1;
+		}
+	cout << i << " цифр в представлении числа N в 7-ричной системе счисления" << endl;
+	return 0;                            //завершение программы
+}
