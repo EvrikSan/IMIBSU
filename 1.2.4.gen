@@ -1,0 +1,59 @@
+#include <iostream>
+#include <string>
+#include <random>
+#include <ctime>
+#include <fstream>
+#include <math.h>
+
+using namespace std;
+
+int main() {
+	srand(time(0));
+	setlocale(LC_ALL, "Russian");
+	ofstream fout;
+	for (int i = 0; i < 100; i++) {
+		fout.open(to_string(i) + string(".in"));             //создание файла входных данных
+		int x, y;
+		x = rand() % 41 - 20;
+		y = rand() % 41 - 20;
+		fout << x << " " << y << endl;                       //запись входных данных
+		fout.close();
+		fout.open(to_string(i) + string(".out"));            //создание файла выходных данных
+		double r;
+		r = sqrt(x * x + y * y);
+		if (y >= 0) {                          //верхняя половина фигуры
+			if (r < 6) {                       //внутренний полукруг
+				fout << 6 - r;
+			}
+			else if (fabs(x) > 10 || fabs(y) > 10) {   //область вне фигуры
+				if (fabs(x) > 10 && fabs(y) > 10) {    //кратчайшее расстояние до угла
+					fout << sqrt((fabs(x) - 10) * (fabs(x) - 10) + (fabs(y) - 10) * (fabs(y) - 10));
+				}
+				else {                                 //кратчайшее расстояние до стороны фигуры
+					if (fabs(x) > 10) {
+						fout << fabs(x) - 10 << endl;
+					}
+					else {
+						fout << fabs(y) - 10 << endl;
+					}
+				}
+			}
+			else {
+				fout << "NO" << endl;
+			}
+		}
+		else {                                  //нижняя половина фигуры
+			if (r > 10) {                       //зона вне фигуры
+				fout << r - 10 << endl;
+			}
+			else if (fabs(x) < 6 && fabs(y) < 6) {     //внутренний прямоугольник
+				fout << min(6 - fabs(x), 6 - fabs(y));
+			}
+			else {
+				fout << "NO" << endl;
+			}
+		}
+		fout.close();
+	}
+	return 0;
+}
