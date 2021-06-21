@@ -1,0 +1,26 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main() {
+	setlocale(LC_ALL, "Russian");
+	int a, b, c;                         //стороны треугольника
+	cin >> a >> b >> c;  
+	if (a > b + c && b > a + c && c > a + b) {    //проверка на треугольник
+		if (b > a)                       //сортировка от большего к меньшему а - наибольший, с - наименьший
+			swap(a, b);
+		if (c > a)
+			swap(a,c);
+		if (c > b)
+			swap(b, c);
+		if (a * a > b* b + c * c) {
+			double p, S;                 //р - полусумма сторон треугольника, S - площадь треугольника
+			p = (a + b + c) / 2;
+			S = sqrt(p * (p - a) * (p - b) * (p - c));
+			cout << "Стороны треугольника: " << a << " " << b << " " << c << endl;      //ответ
+			cout << "Площадь треугольника = " << S << endl;
+		}
+	}
+	return 0;                            //завершение программы
+}
