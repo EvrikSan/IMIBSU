@@ -1,0 +1,43 @@
+#include <iostream>
+#include <string>
+#include <random>
+#include <ctime>
+#include <fstream>
+#include <math.h>
+
+using namespace std;
+
+int main() {
+	srand(time(0));
+	setlocale(LC_ALL, "Russian");
+	ofstream fout;
+	for (int i = 0; i < 100; i++) {
+		fout.open(to_string(i) + string(".in"));             //создание файла входных данных
+		int x, y;
+		x = rand() % 21 - 10;
+		y = rand() % 21 - 10;
+		fout << x << " " << y << endl;                       //запись входных данных
+		fout.close();
+		fout.open(to_string(i) + string(".out"));            //создание файла выходных данных
+		double r;
+		r = sqrt(x * x + y * y);
+		if (x * y >= 0) {                    //проверка 1ой и 3ей четверти
+			if (r <= 10) {
+				fout << "YES" << endl;
+			}
+			else {
+				fout << "NO" << endl;
+			}
+		}
+		else {                               //проверка 2ой и 4ой четверти
+			if (r >= 5 && r <= 10) {
+				fout << "YES" << endl;
+			}
+			else {
+				fout << "NO" << endl;
+			}
+		}
+		fout.close();
+	}
+	return 0;
+}
