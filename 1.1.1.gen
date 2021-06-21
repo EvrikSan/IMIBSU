@@ -1,0 +1,29 @@
+#include <iostream>
+#include <string>
+#include <random>
+#include <ctime>
+#include <fstream>
+#include <math.h>
+
+using namespace std;
+
+int main() {
+	srand(time(0));
+	ofstream fout;
+	setlocale(LC_ALL, "Russian");
+	for (int i = 0; i < 100; i++) {
+		double a, b, c, S;                         //стороны треугольника. a,b - катеты; с - гипотенуза; S - площадь треугольника
+		a = rand() % 100;
+		b = rand() % 100;
+		c = sqrt(a * a + b * b);
+		S = a * b / 2;
+		fout.open(to_string(i) + string(".in"));   //создание файла входных данных
+		fout << a << " " << c;
+		fout.close();
+		fout.open(to_string(i) + string(".out"));  //создание файла выходных данных
+		fout << "Длина второго катета = " << b << endl;
+		fout << "Площаль треугольника = " << S << endl;
+		fout.close();
+	}
+	return 0;                      //завершение программы
+}
