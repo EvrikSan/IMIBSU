@@ -1,0 +1,45 @@
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+int main() {
+	setlocale(LC_ALL, "Russian");
+	double x, y;
+	cin >> x >> y;
+	double r; 
+	r = sqrt(x * x + y * y);               //радиус до центра
+	if (y >= 0) {                          //верхняя половина фигуры
+		if (r < 6) {                       //внутренний полукруг
+			cout << 6 - r;
+		}
+		else if (fabs(x) > 10 || fabs(y) > 10) {   //область вне фигуры
+			if (fabs(x) > 10 && fabs(y) > 10) {    //кратчайшее расстояние до угла
+				cout << sqrt((fabs(x) - 10) * (fabs(x) - 10) + (fabs(y) - 10) * (fabs(y) - 10));
+			}
+			else {                                 //кратчайшее расстояние до стороны фигуры
+				if (fabs(x) > 10) {
+					cout << fabs(x) - 10 << endl;
+				}
+				else {
+					cout << fabs(y) - 10 << endl;
+				}
+			}
+		}
+		else {
+			cout << "NO" << endl;
+		}
+	}
+	else {                                  //нижняя половина фигуры
+		if (r > 10) {                       //зона вне фигуры
+			cout << r - 10 << endl;
+		}
+		else if (fabs(x) < 6 && fabs(y) < 6) {     //внутренний прямоугольник
+			cout << min(6 - fabs(x), 6 - fabs(y));
+		}
+		else {
+			cout << "NO" << endl;
+		}
+	}
+	return 0;                            //завершение программы
+}
