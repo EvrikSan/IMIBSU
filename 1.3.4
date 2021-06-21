@@ -1,0 +1,15 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	setlocale(LC_ALL, "Russian");
+	int m, k = 0, q = 1;                //искомое число, q - степень 4
+	cin >> m;
+	while (q * 4 < m) {
+		q *= 4;
+		k++;
+	}
+	cout << k << endl;
+	return 0;                            //завершение программы
+}
