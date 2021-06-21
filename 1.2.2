@@ -1,0 +1,20 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	setlocale(LC_ALL, "Russian");
+	int h, m, s;                      //часы, минуты, секунды
+	cin >> h >> m >> s;
+	s += 1;
+	if (s == 60) {                    //если стало 60 секунд
+		s = 0;
+		m += 1;
+		if (m == 60) {                //если стало 60 минут
+			m = 0;
+			h += 1;
+		}
+	}
+	cout << h << " часов " << m << " минут " << s << " секунд." << endl;
+	return 0;                      //завершение программы
+}
