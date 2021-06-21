@@ -1,0 +1,35 @@
+#include <iostream>
+#include <string>
+#include <random>
+#include <ctime>
+#include <fstream>
+
+using namespace std;
+
+int main() {
+	srand(time(0));
+	setlocale(LC_ALL, "Russian");
+	ofstream fout;
+	for (int i = 0; i < 100; i++) {
+		fout.open(to_string(i) + string(".in"));             //создание файла входных данных
+		double x, s = 0, f = 1, q = 3;
+		x = rand() % 100;
+		fout << x << endl;
+		fout.close();
+		fout.open(to_string(i) + string(".out"));            //создание файла выходных данных
+		if (x == -3) {
+			fout << "Невозможно вычислить" << endl;
+		}
+		else {
+			s = f / q + x;
+			for (int i = 2; i <= 5; i++) {
+				q *= 3;                         //степень тройки
+				f *= i;                         //факториал
+				s = f / (q + s);                //пересчет суммы
+			}
+			fout << s;
+		}
+		fout.close();
+	}
+	return 0;
+}
