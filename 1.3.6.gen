@@ -1,0 +1,35 @@
+#include <iostream>
+#include <string>
+#include <random>
+#include <ctime>
+#include <fstream>
+
+using namespace std;
+
+int main() {
+	srand(time(0));
+	ofstream fout;
+	setlocale(LC_ALL, "Russian");
+	for (int i = 0; i < 100; i++) {
+		int n = rand() % 100 + 1;                  //количество чисел в последовательности
+		int mx = -1e9, imx = -1;
+		fout.open(to_string(i) + string(".in"));   //создание файла входных данных
+		for (int j = 0; j < n; j++) {
+			int x = 0;
+			while (x = !0) {
+				x = rand() % 500 - 250 + 1;        //создание ненулевого члена последовательности 
+			}                                           
+			if (x >= mx) {                         //обновление последнего наибольшего числа
+				mx = x;
+				imx = j + 1;
+			}
+			fout << x << " ";                      //запись входных данных в файл
+		}
+		fout << "0";
+		fout.close();
+		fout.open(to_string(i) + string(".out"));  //создание файла выходных данных
+		fout << "Последнее наибольшее число под номером " << imx << endl;    //запись выходных данных
+		fout.close();
+	}
+	return 0;                      //завершение программы
+}
