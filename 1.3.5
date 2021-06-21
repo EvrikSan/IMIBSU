@@ -1,0 +1,23 @@
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	setlocale(LC_ALL, "Russian");
+	long long m, k, i = 1;     //k - вспомогательная переменная, i - старший разряд
+	cin >> m;
+	if (m % 10 == 9) {
+		m = (m - 8) * 10;           //частный случай
+	}
+	else {
+		m++;
+	}
+	k = m;
+	while (k > 9) {
+		k /= 10;
+		i *= 10;
+	}
+	m += i;
+	cout << m;
+	return 0;                            //завершение программы
+}
