@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+#include <random>
+#include <ctime>
+#include <fstream>
+
+using namespace std;
+
+int main() {
+	srand(time(0));
+	setlocale(LC_ALL, "Russian");
+	ofstream fout;
+	for (int i = 0; i < 100; i++) {
+		fout.open(to_string(i) + string(".in"));             //создание файла входных данных
+		int m, k, i = 1;                                 //k - искомое число, q - степень 4
+		m = rand() % 1e9;
+		fout << m << endl;
+		fout.close();
+		fout.open(to_string(i) + string(".out"));            //создание файла выходных данных
+		if (m % 10 == 9) {
+			m = (m - 8) * 10;           //частный случай
+		}
+		else {
+			m++;
+		}
+		k = m;
+		while (k > 9) {
+			k /= 10;
+			i *= 10;
+		}
+		m += i;
+		fout << m << endl;
+		fout.close();
+	}
+	return 0;
+}
